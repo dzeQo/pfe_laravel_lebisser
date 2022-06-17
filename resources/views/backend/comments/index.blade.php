@@ -38,10 +38,10 @@
                 <td>{{$comment->post_id}}</td>
                 <td> {{$comment->email}} </td>
                 <td>{{$comment->comment}}</td>
-                <th>{{$comment->status}}</th>
+                <th>@if($comment->status == 0) <span class="text text-warning">non decided</span> @elseif($comment->status == 1)<span class="text text-success">Validated</span> @elseif($comment->status == 2)<span class="text text-danger">rejected</span>@endif</th>
                 <td>
                 <a class="btn btn-info btn-sm" href="{{url('admin/comments/'.$comment->id.'/edit')}}">Update</a>
-                  <a onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm" href="{{url('admin/comment/delete/'.$comment->id)}}">Delete</a>
+                  <a onclick="return confirm('Are you sure you want to delete?')" class="btn btn-danger btn-sm" href="{{url('admin/comments/delete/'.$comment->id)}}">Delete</a>
                 </td>
               </tr>
               @endforeach

@@ -7,81 +7,38 @@
     <title>@yield('title')</title>
     <!-- Bootstrap css -->
     <link rel="stylesheet"  type="text/css" href="{{asset('library')}}/bs4/bootstrap.min.css" />
+    <link rel="stylesheet"  type="text/css" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css" />
+    
+     <!--  css -->
+     <link rel="stylesheet"  type="text/css" href="{{asset('library')}}/front.css" />
     <!--  Jquery -->
     <script type="text/javascript" src="{{asset('library')}}/bs4/jquery-3.6.0.min.js"></script>
     <!--  BS4 Js -->
     <script type="text/javascript" src="{{asset('library')}}/bs4/bootstrap.bundle.min.js"></script>
 
+    <!--claendar fetching -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            },
+            events: '/pfe_laravel_lebisser/public/calendarEvent'
+        });
+        calendar.render();
+        });
+
+        </script>
+
     <!------ Include the above in your HEAD tag ---------->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
-    <style>
-        .navbar { background-color: #ffa366; }
-        .navbar .navbar-nav .nav-link { color: #fff; }
-        .navbar .navbar-nav .nav-link:hover { color: #475a3b; }
-        .navbar .navbar-nav .active > .nav-link { color: #475a3b; }
-
-        footer a.text-light:hover { 
-            color: #fed136!important;
-             text-decoration: none; 
-        }
-        footer .cizgi { 
-            border-right: 1px solid #535e67; 
-        }
-        @media (max-width: 992px) {
-             footer .cizgi { border-right: none; } 
-        }
-        .searchbar{
-            margin-bottom: auto;
-            margin-top: auto;
-            height: 60px;
-            background-color: #353b48;
-            border-radius: 30px;
-            padding: 10px;
-        }
-
-            .search_input{
-                color: white;
-                border: 0;
-                outline: 0;
-                background: none;
-                width: 0;
-                caret-color:transparent;
-                line-height: 40px;
-                transition: width 0.4s linear;
-            }
-
-            .searchbar:hover > .search_input{
-                padding: 0 10px;
-                width: 450px;
-                caret-color:red;
-                transition: width 0.4s linear;
-            }
-
-            .searchbar:hover > .search_icon{
-                background: white;
-                color: #e74c3c;
-            }
-
-            .search_icon{
-                height: 40px;
-                width: 40px;
-                float: right;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
-                color:white;
-                text-decoration:none;
-            }
-            hr {
-                border: none;
-                height: 3px;
-                background-color: #353b48; 
-                background-image: -webkit-linear-gradient(left, rgba(66,133,244,.8), rgba(66, 133, 244,.6), rgba(0,0,0,0));
-            }
-           
-    </style>
+    
 
 </head>
 <body>
@@ -89,7 +46,7 @@
         <!--- Navbar --->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <a class="navbar-brand text-white" href="{{url('/')}}"><i class="fa fa-graduation-cap fa-lg mr-2"></i>FssmMAg</a>
+                <a class="navbar-brand text-white" href="{{url('/')}}"><img width="150rem" height="50rem" src="{{asset('/imgs/fmag.png')}}"></i></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse" aria-controls="nvbCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -97,25 +54,31 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active pl-1">
                             <a class="nav-link" href="{{url('/')}}"><i class="fa fa-home fa-fw mr-1"></i>home</a>
+                        </li> 
+                        <div class="dropdown">
+                            <button class="btn btn-warnning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 Posts
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item " href="{{url('/offers')}}" >offers</a>
+                                <a class="dropdown-item " href="{{url('/planing')}}" >exams</a>
+                                <a class="dropdown-item " href="{{url('/events')}}" >events</a>
+                            </div>
+                        </div>
+                        <li class="nav-item pl-1">
+                            <a class="nav-link" href="{{url('/calendar')}}"><i class="fa fa-calendar-alt fa-fw fa-rotate-180 mr-1"></i>Calendar</a>
                         </li>
                         <li class="nav-item pl-1">
                             <a class="nav-link" href="{{url('/contact-us')}}"><i class="fa fa-phone fa-fw fa-rotate-180 mr-1"></i>Contact Us</a>
                         </li>
                         <li class="nav-item pl-1">
-                            <a class="nav-link" href="#"><i class="fa fa-info-circle fa-fw mr-1"></i>About</a>
+                            <a class="nav-link" href="{{url('/about-us')}}"><i class="fa fa-info-circle fa-fw mr-1"></i>About</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav><br />
-        <form action="{{url('/')}}">
-            <div class="d-flex justify-content-center h-10">
-                <div class="searchbar">
-                <input class="search_input" type="text" name="q" placeholder="Rechercher">
-                    <button class="search_icon"><i class="fas fa-search"></i></button>
-                </div>
-            </div>
-        </form><br>
+       
         <!--# Navbar #-->
             
         <main class="my-5">
@@ -130,8 +93,8 @@
 					<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 cizgi">
 						<div class="card bg-secondary border-0">
 							<div class="card-body text-light text-center">
-							<p class="d-inline lead"> © 2022 all rights reserved  <br>
-							<a href="#" class="text-light d-block lead">FssmMAG</a>
+							<p class="d-inline lead"> © 2022 all rights reserved  <br />
+							<a href="#" class="text-light d-block lead"><img height="40rem" src="{{asset('/imgs/fmag.png')}}">FssmMAG</a>
 							</p>
 	
 							</div>
@@ -141,9 +104,8 @@
 					<div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4 cizgi">
 						<div class="card bg-secondary border-0">
 							<div class="card-body text-center">
-								<h5 class="card-title text-white display-4" style="font-size:30px">Contcter le développeur</h5>
-								<a class="text-light d-block lead" style="margin-left: -20px" href="#"><i class="fa fa-phone mr-2"></i>+212 641086366</a>
-								<a class="text-light d-block lead" href="#"><i class="fa fa-envelope mr-2"></i>zakariae.lebisser01@edu.uca.ma</a>
+								<h5 class="card-title text-white display-4" style="font-size:30px">Contcter l'admin</h5>
+								<a class="text-light d-block lead" href="#"><i class="fa fa-envelope mr-2"></i>fssmmag@gmail.com</a>
 							</div>
 						</div>
 					</div>
@@ -176,5 +138,6 @@
 		</div>
 	</footer>
 	<!--# Footer #-->
+    @yield('js')
 </body>
 </html>

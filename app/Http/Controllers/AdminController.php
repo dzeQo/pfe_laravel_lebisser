@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Comment;
+use App\Models\Post;
 
 class AdminController extends Controller
 {
@@ -36,7 +37,7 @@ class AdminController extends Controller
 
     function all_comments(){
         $data=Comment::all();
-        return view('backend.comments.index',['data'=>$data]);
+        return view('backend.comments.index',['data'=>$data ]);
     }
 
     public function edit($id)
@@ -58,7 +59,7 @@ class AdminController extends Controller
     public function delete_comment($id)
     {
         Comment::where('id',$id)->delete();
-        return redirect('admin/comment');
+        return redirect('admin/comments');
     }
 
 

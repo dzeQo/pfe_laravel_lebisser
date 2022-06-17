@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1ec4eda76ce890e6b057d14dde37006b",
+    "content-hash": "a5b769783087d5d056088e273f55201f",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -1553,6 +1553,58 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "maddhatter/laravel-fullcalendar",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maddhatter/laravel-fullcalendar.git",
+                "reference": "27833d37aafe9b87698dd3ac20d4d2f54b48caab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maddhatter/laravel-fullcalendar/zipball/27833d37aafe9b87698dd3ac20d4d2f54b48caab",
+                "reference": "27833d37aafe9b87698dd3ac20d4d2f54b48caab",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.0|^6.0|^7.0|^8.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "MaddHatter\\LaravelFullcalendar\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "Calendar": "MaddHatter\\LaravelFullcalendar\\Facades\\Calendar"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "MaddHatter\\LaravelFullcalendar": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shawn Tunney",
+                    "email": "shawn.tunney@gmail.com"
+                }
+            ],
+            "description": "Laravel helper for FullCalendar.io",
+            "support": {
+                "issues": "https://github.com/maddhatter/laravel-fullcalendar/issues",
+                "source": "https://github.com/maddhatter/laravel-fullcalendar/tree/develop"
+            },
+            "abandoned": true,
+            "time": "2021-01-09T01:22:33+00:00"
         },
         {
             "name": "monolog/monolog",

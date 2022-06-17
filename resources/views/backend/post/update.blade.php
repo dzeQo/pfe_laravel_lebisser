@@ -81,6 +81,15 @@
                           </td>
                       </tr>
                       <tr>
+                          <th>Start at <span class="text-danger">*</span></th>
+                          <td><input type="datetime-local" name="start_at" value="{{$data->start_at}}" class="form-control" /></td>
+                      </tr>
+                      <tr>
+                          <th>End at <span class="text-danger">*</span></th>
+                          <td><input type="datetime-local" name="end_at" value="{{$data->end_at}}" class="form-control" /></td>
+                      </tr>
+
+                      <tr>
                           <td colspan="2">
                               <input type="submit" class="btn btn-primary" />
                           </td>

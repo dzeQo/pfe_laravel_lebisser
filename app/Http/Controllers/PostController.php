@@ -75,6 +75,8 @@ class PostController extends Controller
         $post->image=$reFullImage;
         $post->detail=$request->detail;
         $post->tags=$request->tags;
+        $post->start_at=$request->start_at;
+        $post->end_at=$request->end_at;       
         $post->save();
 
         return redirect('admin/post/create')->with('success','Data has been added');
@@ -117,6 +119,8 @@ class PostController extends Controller
             'title'=>'required',
             'category'=>'required',
             'detail'=>'required',
+            'start_at'=>'required',
+            'end_at'=>'required'
         ]);
 
         // Post Thumbnail
@@ -146,6 +150,8 @@ class PostController extends Controller
         $post->image=$reFullImage;
         $post->detail=$request->detail;
         $post->tags=$request->tags;
+        $post->start_at=$request->start_at;
+        $post->end_at=$request->end_at;       
         $post->save();
 
         return redirect('admin/post/'.$id.'/edit')->with('success' , 'data has been updated successfully !!');

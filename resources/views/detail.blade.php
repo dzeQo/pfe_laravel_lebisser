@@ -8,7 +8,9 @@
                 @if(Session::has('success'))
 					<p class="alert alert-success">{{session('success')}}</p>
 				@endif
-                <h4 class="card-header">{{$detail->title}}</h4>
+                <h4 class="card-header">{{$detail->title}}
+                <span class="float-right badge badge-dark"> nombre de visites : {{$detail->views}} </span>
+                </h4>
                <a href="{{url('detail/'.Str::slug($detail->title).'/'.$detail->id)}}">
                     <img style="max-width: 7rem;  "  class="card-img-top" src="{{asset('imgs/thumb/'.$detail->thumb)}}" alt="{{ $detail->title }}">
                 </a>
@@ -17,8 +19,12 @@
                     </ul>
                      <hr>
                     <img  style="max-width:50%;"  class="card-img-top ml-4  my-4" src="{{asset('imgs/full/'.$detail->image)}}" alt="{{$detail->title}}">
-                    <p class="alert alert-info"> tags : {{ $detail->tags }}</p><br />
-                    <p class="lead">{{ $detail->detail }}</p><br />
+                    <div class="projcard-tagbox">
+                        <span class="projcard-tag">{{$detail->tags}}</span>
+                    </div>
+                    <p class="alert alert-dark "> Commencé á : {{ $detail->start_at }}
+                     Terminé  á : {{ $detail->end_at }}<br />
+                    {{ $detail->detail }}</p><br />
                 </div>
             </div><br />
             <div class="card shadow  mt-2 mb-4">
@@ -28,6 +34,11 @@
                         @csrf
                         <input class="form-control mt-2" type="email" name="email" placeholder="Entrez votre email"><br/>
                         <textarea class="form-control mt-2" name="comment" placeholder="Entrez votre commentaire" rows="3"></textarea>
+                        <div class="form-group" >
+                            <strong>Recaptcha:</strong>                  
+                            {!! NoCaptcha::renderJs() !!}
+                            {!! NoCaptcha::display() !!}
+                        </div>   
                         <input type="submit" value="Ajouter" class="btn btn-outline-dark mt-2 my-2">
                     </form>
                 </div>

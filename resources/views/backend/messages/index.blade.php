@@ -21,6 +21,8 @@
               <th>name</th>
               <th>sent BY</th>
               <th>message</th>
+              <th>Sent At</th>
+              <th>Action</th>
           </thead>
           <tfoot>
           <tr>
@@ -28,6 +30,8 @@
               <th>name</th>
               <th>sent BY</th>
               <th>Messages</th>
+              <th>Sent At</th>
+              <th>Action</th>
             </tr>
           </tfoot>
           <tbody>
@@ -37,8 +41,8 @@
                 <td>{{$msg->name}}</td>
                 <td>{{$msg->email}}</td>
                 <td>{{$msg->message}}</td>
-
-                </td>
+                <td>{{ $msg->created_at->format('d-m-y') }}</td>
+                <td><a class="btn btn-info btn-sm" href="{{url('admin/messages/'.$msg->id.'show')}}">show</a></td>
               </tr>
               @endforeach
           </tbody>

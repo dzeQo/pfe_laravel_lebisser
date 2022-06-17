@@ -1,6 +1,6 @@
 
 @extends('layout')
-@section('conte  nt')
+@section('content')
         <div class="container-fluid">
 
           <!-- Breadcrumbs-->
@@ -20,7 +20,6 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-
                 @if($errors)
                   @foreach($errors->all() as $error)
                     <p class="text-danger">{{$error}}</p>

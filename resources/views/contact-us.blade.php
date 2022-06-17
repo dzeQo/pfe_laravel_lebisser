@@ -74,6 +74,9 @@
                     <div class="form-group">
                         <input type="text" name="email" class="form-control" placeholder="Votre Email *" value="" required />
                     </div> 
+                    <div class="form-group">
+                        <input type="text" name="subject" class="form-control" placeholder="sujet *" value="" required />
+                    </div> 
                     <div class="form-group" required>
                      <strong>Recaptcha:</strong>                  
                      {!! NoCaptcha::renderJs() !!}

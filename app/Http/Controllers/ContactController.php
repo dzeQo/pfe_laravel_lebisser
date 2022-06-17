@@ -17,17 +17,20 @@ class ContactController extends Controller
             'name' => 'required',
             'email' => 'required',
             'message' => 'required',
+            'subject'=>'required',
             'g-recaptcha-response' => 'required|captcha',
         ]);
         $data =[
            'name'=>$request->name,
            'email'=>$request->email,
+           'subject'=>$request->subject,
            'message'=>$request->message
        ];
 
         $messages = new Contact;
         $messages->name=$request->name;
         $messages->email=$request->email;
+        $messages->subject=$request->subject;
         $messages->message=$request->message;
         $messages->save();
 
@@ -41,5 +44,9 @@ class ContactController extends Controller
         return view('backend.messages.index'  , ['messages' =>$messages]);
     }
 
+    public function show($id){
+        $msgs = Contact::find($id);
+        return view('backend.messages.show' , ['msgs' =>$msgs] );
+    }
     
 }

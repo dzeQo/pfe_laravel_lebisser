@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Comment;
+use Calendar;
+use Illuminate\Contracts\Pagination\Paginator;
 
 class Homecontroller extends Controller
 {
@@ -16,17 +18,17 @@ class Homecontroller extends Controller
             $plans=Post::where('detail','like','%'.$q.'%')->where('idcat',2)->orderBy('id','desc')->get();
             $events=Post::where('detail','like','%'.$q.'%')->where('idcat',3)->orderBy('id','desc')->get();
     	}else{
-    		$posts=Post::orderBy('id','desc')->where('idcat',1)->get();
-            $plans = Post::orderBy('id' , 'desc')->where('idcat',2)->get();
-            $events = Post::orderBy('id' , 'desc')->where('idcat' , 3)->get();
+    		$posts=Post::orderBy('id','desc')->where('idcat',1)->take(3)->get();
+            $plans = Post::orderBy('id' , 'desc')->where('idcat',2)->take(3)->get();
+            $events = Post::orderBy('id' , 'desc')->where('idcat' , 3)->take(3)->get();
     	}
         return view('home' , ['posts' => $posts , 'plans' =>$plans , 'events'=>$events]);
     }
 
     //POST DETAILS 
     public function detail(Request $request , $slug , $pid){
+        Post::find($pid)->increment('views');
         $detail= Post::find($pid);
-
         return view('detail' , ['detail' => $detail]);
     }
 
@@ -34,7 +36,8 @@ class Homecontroller extends Controller
     public function save_comment(Request $request , $slug , $id ){
         $request->validate([
             'email'=>'required',
-            'comment'=>'required'
+            'comment'=>'required',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         $cms = new Comment;
@@ -46,6 +49,26 @@ class Homecontroller extends Controller
         return redirect('detail/'.$slug.'/'.$id)->with('success',' Votre Commentaire a bien ajouté.');
 
     }
+    public function offers(Request $request){
+       
+    		$offers=Post::orderBy('id','desc')->where('idcat',1)->Paginate(6);
+            return view('offers' , ['offers' => $offers]);
+    }
+
+    public function plans_home(Request $request){
+    		$plans=Post::orderBy('id','desc')->where('idcat',2)->Paginate(6);
+            return view('planing' , ['plans' => $plans]);
+    }
+
+    public function event_home(){
+        $events=Post::orderBy('id','desc')->where('idcat',3)->Paginate(6);
+        return view('event' , ['events' => $events]);
+    }
+    public function about(){
+        return view('about-us');
+    }
+
+  
 
 }
 

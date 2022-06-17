@@ -16,6 +16,13 @@
 
           <!-- DataTables Example -->
           <div class="card mb-3">
+            <div class="alert alert-info">how to udpdate comment 
+              <ul>
+                <li>0 ==> 'non decided'</li>
+                <li>1 ==> 'Approve'</li>
+                <li>2 ==> 'Decline'</li>
+              </ul>
+            </div>
             <div class="card-header">
               <i class="fas fa-table"></i> update comment
               <a href="{{url('admin/comments')}}" class="float-right btn btn-sm btn-dark">All comments</a>

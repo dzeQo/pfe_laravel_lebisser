@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->text('detail');
             $table->string('tags')->nullable();
+            $table->dateTime('start_at')->unique();
+            $table->dateTime('end_at')->unique();
             $table->timestamps();
         });
     }
