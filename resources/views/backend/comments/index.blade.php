@@ -3,6 +3,13 @@
 @section('title','All Comments')
 @section('content')
 
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">comments </li>
+          </ol>
 <div class="container-fluid">
 <div class="card mb-3">
     <div class="card-header">

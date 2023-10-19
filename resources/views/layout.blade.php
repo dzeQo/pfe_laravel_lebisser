@@ -65,24 +65,6 @@
           </div>
         </li>
         </li>
-        <!-- Users -->
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Users</span>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="{{url('admin/users')}}">View All</a>
-            <a class="dropdown-item" href="{{url('admin/users/create')}}">Add New</a>
-          </div>
-        </li>
-        </li>
-        <!-- Settings -->
-        <li class="nav-item">
-          <a class="nav-link" href="{{url('admin/setting')}}">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Settings</span>
-          </a>
         </li>
         <!--messages-->
         <li class="nav-item">

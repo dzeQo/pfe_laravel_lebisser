@@ -10,7 +10,7 @@
     <li class="breadcrumb-item">
       <a href="index.html">Dashboard</a>
     </li>
-    <li class="breadcrumb-item active">Overview</li>
+    <li class="breadcrumb-item active">Categories</li>
   </ol>
 
 
